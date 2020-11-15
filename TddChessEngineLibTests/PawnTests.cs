@@ -9,6 +9,12 @@ namespace TddChessEngineLibTests
         [Fact]
         public void WhenPawnTurnsFromE2ToE4_ThenItsPositionsChanges()
         {
+            Pawn pawn = new Pawn("e2", "White");
+            pawn.TurnTo("e4");
+            Position posTrue = new Position("e4");
+            Position posFact = pawn.Pos;
+
+            Assert.Equal(posTrue.Letter + posTrue.Number, posFact.Letter + posFact.Number);
         }
     }
 }

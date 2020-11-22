@@ -14,7 +14,20 @@ namespace TddChessEngineLib
         public void TurnTo(string finishPos)
         {
             Position finishPosition = new Position(finishPos);
-            Pos = finishPosition;
+            if (FigureColor == FigureColor.White)
+            {
+                if (finishPosition.Number > Pos.Number)
+                {
+                    Pos = finishPosition;
+                }
+            }
+            else 
+            {
+                if (finishPosition.Number < Pos.Number)
+                {
+                    Pos = finishPosition;
+                }
+            }
         }
     }
     public enum FigureColor

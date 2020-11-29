@@ -20,11 +20,28 @@ namespace TddChessEngineLibTests
         public void WhenBlackPawnTriesToGoBack_ThenItsCantGoBack()
         {
             Pawn pawn = new Pawn("e6", FigureColor.Black);
-            pawn.TurnTo("e7");
-            Position posTrue = new Position("e6");
-            Position posFact = pawn.Pos;
+            string newPosition = "e7";
 
-            Assert.Equal(posTrue.Letter + posTrue.Number, posFact.Letter + posFact.Number);
+
+            Assert.Throws<ArgumentException>(() => pawn.TurnTo(newPosition));
+        }
+        [Fact]
+        public void WhenWhitePawnTriesGoBack_ThenItsCantGoBack()
+        {
+            Pawn pawn = new Pawn("e2", FigureColor.White);
+            string newPosition = "e1";
+
+            Assert.Throws<ArgumentException>(() => pawn.TurnTo(newPosition));
+        }
+
+        [Fact]
+        public void WhenWhitePawnTurnsFromE3ToE5_ThenItsCantJump()
+        {
+            Pawn pawn = new Pawn("e3", FigureColor.White);
+            string newPosition = "e5";
+
+            Assert.Throws<ArgumentException>(() => pawn.TurnTo(newPosition));
+
         }
     }
 }

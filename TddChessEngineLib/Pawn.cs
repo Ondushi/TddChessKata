@@ -16,16 +16,24 @@ namespace TddChessEngineLib
             Position finishPosition = new Position(finishPos);
             if (FigureColor == FigureColor.White)
             {
-                if (finishPosition.Number > Pos.Number)
+                if (finishPosition.Number > Pos.Number && (finishPosition.Number - Pos.Number == 1 || finishPosition.Number - Pos.Number == 2 && Pos.Number == 2))
                 {
                     Pos = finishPosition;
+                }
+                else
+                {
+                    throw new ArgumentException("Pawn can't go");
                 }
             }
             else 
             {
-                if (finishPosition.Number < Pos.Number)
+                if (finishPosition.Number < Pos.Number && (Pos.Number - finishPosition.Number == 1 || Pos.Number - finishPosition.Number == 2 && Pos.Number == 7))
                 {
                     Pos = finishPosition;
+                }
+                else
+                {
+                    throw new ArgumentException("Pawn can't go");
                 }
             }
         }

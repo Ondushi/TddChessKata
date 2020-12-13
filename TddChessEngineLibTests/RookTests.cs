@@ -16,5 +16,11 @@ namespace TddChessEngineLibTests
 
             Assert.Equal(positionExpected, positionFact);
         }
+        [Fact]
+        public void WhenCreatingRookOnA0ThrowsException()
+        {
+            string incorrectPosition = "a0";
+            Assert.Throws<ArgumentException>(() => new Rook(incorrectPosition));
+        }
     }
 }
